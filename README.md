@@ -1,5 +1,12 @@
 # System Wide FD Tables
 
+## Description
+
+- This program displays the tables used by the OS to keep track of open files, assignation of File Descriptors (FD) and processess.
+- The FD Tables include process FD table, system-wide FD table, Vnodes FD table, composed table for all the currently processes belong to the current user executing the program.
+- Allows the user to enter a threshold value to indicate the display of the selected processes with the number of file descriptors greater than the threshold in the format PID (FD) below any FD tables indicated by the user.
+- Allows the user to enter a specific process id number (PID), and displays tables including the target process.
+
 ## How did I solve the problem?
 
 Firstly, I went through the '/proc' directory system to see what was stored in there. I realized that I coudl find the PID, FD & location from accessing different folders in this directory, however would have to use the 'sys/stat.h' library to find out about inode data. Then I created functions, to deal with all the positional arguments, as well as created a function to store all the current processes into a linked list. Using this list, I can then print whatever is required based on the command line arguments usign if statements & conditions. Finally, I also created functions to print out the composite tables into text and binary files using fprintf & fwrite.
